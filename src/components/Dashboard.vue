@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr 
-                    v-for="burguer in burguers"
+                    v-for="burguer in $store.state.burguers"
                     :key="burguer.id"
                 >
                     <td>{{ burguer.id }}</td>
@@ -35,7 +35,7 @@
                         >
                             <option value="">Selecione</option>
                             <option
-                                v-for="status in statusList"
+                                v-for="status in $store.state.statusList"
                                 :key="status.id"
                                 :value="burguer.tipo"
                             >
@@ -54,29 +54,25 @@
 
 <script>
 import { onMounted, ref } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
     name: "Dashboard",
 
     //Composition API
     setup(props, { emit }) {
-        const burguers = ref([])
-        const statusList = ref([])
+        const store = useStore()
 
         onMounted(() => {
             getBurguers()
         })
 
         const getStatus = async () => {
-            await fetch('http://localhost:3000/status')
-                .then((response) => response.json())
-                    .then((data) => statusList.value = data)
+            store.dispatch('getStatus')
         }
 
         const getBurguers = async () => {
-            await fetch('http://localhost:3000/burgers')
-                .then((response) => response.json())
-                    .then((data) => burguers.value = data)
+            store.dispatch('getBurguers')
             getStatus()
         }
 
@@ -98,11 +94,11 @@ export default {
         }
 
         const cancelarPedido = async (id) => {
-            const idx = burguers.value.findIndex((item) => item.id === id)
+            const idx = store.state.burguers.findIndex((item) => item.id === id)
             
             await fetch(`http://localhost:3000/burgers/${id}`, {
                 method: "DELETE"
-            }).then(() => burguers.value.splice(idx, 1))
+            }).then(() => store.state.burguers.splice(idx, 1))
                 .then(() => {
                     emit('exibirMsg', {
                         tipo: 'cancelado',
@@ -112,8 +108,6 @@ export default {
         }
 
         return {
-            burguers,
-            statusList,
             alterarStatus,
             cancelarPedido
         }

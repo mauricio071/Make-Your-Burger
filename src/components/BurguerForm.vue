@@ -11,7 +11,7 @@
                 <select v-model="pao" id="pao" name="pao">
                     <option value="">Selecione o seu pão</option>
                     <option
-                        v-for="pao in paes" 
+                        v-for="pao in $store.state.paes" 
                         :key="pao.id"
                         :value="pao"
                     >
@@ -24,7 +24,7 @@
                 <select v-model="carne" id="carne" name="carne">
                     <option value="">Selecione o tipo da sua carne</option>
                     <option
-                        v-for="carne in carnes"
+                        v-for="carne in $store.state.carnes"
                         :key="carne.id"
                         :value="carne"
                     >
@@ -34,7 +34,7 @@
             </div>
             <div class="input-container opcionais-container">
                 <label for="opcionais" class="opcionais-title">Selecione os opcionais:</label>
-                <div v-for="opcional in opcionaisLista" :key="opcional.id" class="checkbox-container" >
+                <div v-for="opcional in $store.state.opcionaisLista" :key="opcional.id" class="checkbox-container" >
                     <input v-model="opcionais" :value="opcional.tipo" type="checkbox" name="opcionais" >
                     <span>{{ opcional.tipo }}</span>
                 </div>
@@ -49,6 +49,7 @@
 <script>
 import Mensagem from "@/components/Mensagem.vue"
 import { ref, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
     name: "BurguerForm",
@@ -58,13 +59,12 @@ export default {
 
     //Composition API
     setup() {
+        const store = useStore()
+
         const nome = ref("")
         const pao = ref("")
         const carne = ref("")
-        const opcionaisLista = ref([])
-        const opcionais = ref([])
-        const paes = ref([])
-        const carnes = ref([])
+        const opcionais= ref([])
         const msg = ref({})
 
         onMounted(async () => {
@@ -72,12 +72,7 @@ export default {
         })
 
         const getDados = async () => {
-            const data = await fetch('http://localhost:3000/ingredientes')
-                .then((response) => response.json())
-
-            paes.value = data.paes
-            carnes.value = data.carnes
-            opcionaisLista.value = data.opcionais
+            store.dispatch('getDadosIngredientes')
         }
 
         const enviarFormulario = async () => {
@@ -115,10 +110,7 @@ export default {
             nome,
             pao,
             carne,
-            opcionaisLista,
             opcionais,
-            paes,
-            carnes,
             msg,
             enviarFormulario
         }
