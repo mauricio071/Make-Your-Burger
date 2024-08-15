@@ -9,25 +9,39 @@
 <script>
 import Dashboard from '@/components/Dashboard.vue'
 import Mensagem from '@/components/Mensagem.vue'
+import { ref } from 'vue'
 
 export default {
   components: { Dashboard, Mensagem },
   name: "Pedidos",
-  data() {
+
+  //Composition API
+  setup() {
+    const msg = ref(null)
+
+    const mostrarMsg = (data) => {
+      msg.value = data
+      setTimeout(() => msg.value = "", 2000)
+    }
+
     return {
-      msg: null
+      msg,
+      mostrarMsg
     }
-  },
-  methods: {
-    mostrarMsg(data) {
-      this.msg = data
+  }
+
+  //Option API
+  // data() {
+  //   return {
+  //     msg: null
+  //   }
+  // },
+  // methods: {
+  //   mostrarMsg(data) {
+  //     this.msg = data
     
-      setTimeout(() => this.msg = "", 2000)
-    }
-  },
+  //     setTimeout(() => this.msg = "", 2000)
+  //   }
+  // },
 }
 </script>
-
-<style scoped>
-
-</style>

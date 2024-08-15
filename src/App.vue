@@ -7,6 +7,7 @@
 <script>
 import Navbar from "@/components/Navbar.vue"
 import Footer from "@/components/Footer.vue"
+import { ref } from 'vue'
 
 export default {
   name: "App",
@@ -14,12 +15,25 @@ export default {
     Navbar,
     Footer
   },
-  data() {
+
+  //Composition API
+  setup() {
+    const logo = ref('/img/logo.png')
+    const descImg = ref('Hamburguer')
+
     return {
-      logo: '/img/logo.png',
-      descImg: 'Hamburguer'
+      logo,
+      descImg
     }
-  },
+  }
+
+  //Option API
+  // data() {
+  //   return {
+  //     logo: '/img/logo.png',
+  //     descImg: 'Hamburguer'
+  //   }
+  // },
 }
 </script>
 

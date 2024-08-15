@@ -85,15 +85,31 @@
         "tipo": "3 Queijos"
       },
       "carne": {
-        "id": 1,
-        "tipo": "Maminha"
+        "id": 3,
+        "tipo": "Picanha"
       },
       "opcionais": [
-        "Bacon",
-        "Salame"
+        "Bacon"
       ],
-      "status": "Em produção",
+      "status": "Solicitado",
       "id": 1
+    },
+    {
+      "nome": "João",
+      "pao": {
+        "id": 4,
+        "tipo": "Integral"
+      },
+      "carne": {
+        "id": 4,
+        "tipo": "Veggie burger"
+      },
+      "opcionais": [
+        "Tomate",
+        "Pepino"
+      ],
+      "status": "Finalizado",
+      "id": 2
     }
   ]
 }

@@ -53,59 +53,122 @@
 </template>
 
 <script>
-
+import { onMounted, ref } from 'vue'
 
 export default {
     name: "Dashboard",
-    data() {
-        return {
-            burguers: [],
-            statusList: [],
-        }
-    },
-    mounted () {
-        this.getBurguers()
-        
-    },
-    methods: {
-        async getStatus() {
+
+    //Composition API
+    setup(props, { emit }) {
+        const burguers = ref([])
+        const statusList = ref([])
+
+        onMounted(() => {
+            getBurguers()
+        })
+
+        const getStatus = async () => {
             await fetch('http://localhost:3000/status')
                 .then((response) => response.json())
-                .then((data) => this.statusList = data)
-        },
-        async getBurguers() {
+                    .then((data) => statusList.value = data)
+        }
+
+        const getBurguers = async () => {
             await fetch('http://localhost:3000/burgers')
                 .then((response) => response.json())
-                .then((data) => this.burguers = data)
-            this.getStatus()
-        },
-        async cancelarPedido(id) {
-            const idx = await this.burguers.findIndex((item) => item.id === id)
-            fetch(`http://localhost:3000/burgers/${id}`, {
-                method: "DELETE", 
-            }).then(() => this.burguers.splice(idx, 1))
+                    .then((data) => burguers.value = data)
+            getStatus()
+        }
+
+        const alterarStatus = async (event, id) => {
+            const novoStatus = event.target.value
+
+            const dataJson = JSON.stringify({ status: novoStatus })
+
+            await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: 'PATCH',
+                headers: { "Content-type": "application/json" },
+                body: dataJson
+            }).then(() => {
+                emit('exibirMsg', {
+                    tipo: 'atualizado',
+                    conteudo: `Pedido Nº${id} atualizado!`
+                })
+            })
+        }
+
+        const cancelarPedido = async (id) => {
+            const idx = burguers.value.findIndex((item) => item.id === id)
+            
+            await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: "DELETE"
+            }).then(() => burguers.value.splice(idx, 1))
                 .then(() => {
-                        this.$emit('exibirMsg', {
+                    emit('exibirMsg', {
                         tipo: 'cancelado',
                         conteudo: `Pedido Nº${id} cancelado!`
                     })
                 })
-        },
-        async alterarStatus(event, id) {
-            const novoStatus = event.target.value
-            
-            const dataJson = JSON.stringify({status: novoStatus})
-            
-            await fetch(`http://localhost:3000/burgers/${id}`, {
-                method: "PATCH",
-                headers: { "Content-type": "application/json" },
-                body: dataJson 
-            }).then(() => this.$emit('exibirMsg', {
-                tipo: 'atualizado',
-                conteudo: `Pedido Nº${id} atualizado!`
-            }))
         }
-    },
+
+        return {
+            burguers,
+            statusList,
+            alterarStatus,
+            cancelarPedido
+        }
+    }
+
+    //Option API
+    // data() {
+    //     return {
+    //         burguers: [],
+    //         statusList: [],
+    //     }
+    // },
+    // mounted () {
+    //     this.getBurguers()
+        
+    // },
+    // methods: {
+    //     async getStatus() {
+    //         await fetch('http://localhost:3000/status')
+    //             .then((response) => response.json())
+    //             .then((data) => this.statusList = data)
+    //     },
+    //     async getBurguers() {
+    //         await fetch('http://localhost:3000/burgers')
+    //             .then((response) => response.json())
+    //             .then((data) => this.burguers = data)
+    //         this.getStatus()
+    //     },
+    //     async cancelarPedido(id) {
+    //         const idx = await this.burguers.findIndex((item) => item.id === id)
+    //         fetch(`http://localhost:3000/burgers/${id}`, {
+    //             method: "DELETE", 
+    //         }).then(() => this.burguers.splice(idx, 1))
+    //             .then(() => {
+    //                     this.$emit('exibirMsg', {
+    //                     tipo: 'cancelado',
+    //                     conteudo: `Pedido Nº${id} cancelado!`
+    //                 })
+    //             })
+    //     },
+    //     async alterarStatus(event, id) {
+    //         const novoStatus = event.target.value
+            
+    //         const dataJson = JSON.stringify({status: novoStatus})
+            
+    //         await fetch(`http://localhost:3000/burgers/${id}`, {
+    //             method: "PATCH",
+    //             headers: { "Content-type": "application/json" },
+    //             body: dataJson 
+    //         }).then(() => this.$emit('exibirMsg', {
+    //             tipo: 'atualizado',
+    //             conteudo: `Pedido Nº${id} atualizado!`
+    //         }))
+    //     }
+    // },
 }
 </script>
 

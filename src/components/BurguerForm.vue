@@ -48,66 +48,137 @@
 
 <script>
 import Mensagem from "@/components/Mensagem.vue"
+import { ref, onMounted } from 'vue'
 
 export default {
-name: "BurguerForm",
-components: {
-    Mensagem
-},
-data() {
-    return {
-        nome: "",
-        pao: "",
-        carne: "",
-        opcionaisLista: [],
-        opcionais: [],
-        paes: [],
-        carnes: [],
-        msg: {},
-    }
-},
-methods: {
-    async getDados() {
-        const data = await fetch('http://localhost:3000/ingredientes')
-            .then((response) => response.json())
-        
-        this.paes = data.paes
-        this.carnes = data.carnes
-        this.opcionaisLista = data.opcionais
+    name: "BurguerForm",
+    components: {
+        Mensagem
     },
-    enviarFormulario() {
-        const data = {
-            nome: this.nome,
-            pao: this.pao,
-            carne: this.carne,
-            opcionais: this.opcionais,
-            status: "Solicitado"
+
+    //Composition API
+    setup() {
+        const nome = ref("")
+        const pao = ref("")
+        const carne = ref("")
+        const opcionaisLista = ref([])
+        const opcionais = ref([])
+        const paes = ref([])
+        const carnes = ref([])
+        const msg = ref({})
+
+        onMounted(async () => {
+            getDados()
+        })
+
+        const getDados = async () => {
+            const data = await fetch('http://localhost:3000/ingredientes')
+                .then((response) => response.json())
+
+            paes.value = data.paes
+            carnes.value = data.carnes
+            opcionaisLista.value = data.opcionais
         }
 
-        const req = fetch('http://localhost:3000/burgers', {
-            method: "Post",
-            headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify(data)
-        }).then((res) => res.json())
-            .then((data) => {
-                this.limparCampos()
-                this.msg = {
-                    tipo: 'pedido',
-                    conteudo: `Pedido Nº${data.id} realizado com sucesso`
-                }
-                setTimeout(() => this.msg = {}, 2000)
-            })
-    },
-    limparCampos() {
-        this.nome = ""
-        this.pao = ""
-        this.carne = ""
-        this.opcionais = []
+        const enviarFormulario = async () => {
+            const data = {
+                nome: nome.value,
+                pao: pao.value,
+                carne: carne.value,
+                opcionais: opcionais.value,
+                status: "Solicitado"
+            }
+            
+            await fetch('http://localhost:3000/burgers', {
+                method: "POST",
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then((response) => response.json())
+                .then((data) => {
+                    limparCampos()
+                    msg.value = {
+                        tipo: 'pedido',
+                        conteudo: `Pedido Nº${data.id} realizado com sucesso!`
+                    }
+                    setTimeout(() => msg.value = "",2000)
+                })
+        }
+
+        const limparCampos = () => {
+            nome.value = ""
+            pao.value = ""
+            carne.value = ""
+            opcionais.value = []
+        }
+
+        return {
+            nome,
+            pao,
+            carne,
+            opcionaisLista,
+            opcionais,
+            paes,
+            carnes,
+            msg,
+            enviarFormulario
+        }
     }
-},
-mounted () {
-    this.getDados()
-},
+
+    //Option API
+    // data() {
+    //     return {
+    //         nome: "",
+    //         pao: "",
+    //         carne: "",
+    //         opcionaisLista: [],
+    //         opcionais: [],
+    //         paes: [],
+    //         carnes: [],
+    //         msg: {},
+    //     }
+    // },
+    // methods: {
+    //     async getDados() {
+    //         const data = await fetch('http://localhost:3000/ingredientes')
+    //             .then((response) => response.json())
+            
+    //         this.paes = data.paes
+    //         this.carnes = data.carnes
+    //         this.opcionaisLista = data.opcionais
+    //     },
+    //     enviarFormulario() {
+    //         const data = {
+    //             nome: this.nome,
+    //             pao: this.pao,
+    //             carne: this.carne,
+    //             opcionais: this.opcionais,
+    //             status: "Solicitado"
+    //         }
+
+    //         const req = fetch('http://localhost:3000/burgers', {
+    //             method: "Post",
+    //             headers: { 'Content-type': 'application/json' },
+    //             body: JSON.stringify(data)
+    //         }).then((res) => res.json())
+    //             .then((data) => {
+    //                 this.limparCampos()
+    //                 this.msg = {
+    //                     tipo: 'pedido',
+    //                     conteudo: `Pedido Nº${data.id} realizado com sucesso!`
+    //                 }
+    //                 setTimeout(() => this.msg = {}, 2000)
+    //             })
+    //     },
+    //     limparCampos() {
+    //         this.nome = ""
+    //         this.pao = ""
+    //         this.carne = ""
+    //         this.opcionais = []
+    //     }
+    // },
+    // mounted () {
+    //     this.getDados()
+    // },
 }
 </script>
   
