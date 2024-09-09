@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
 
+const baseUrl = process.env.VUE_APP_BASE_URL;
+
 export default createStore({
   state: {
     paes: [],
@@ -25,24 +27,22 @@ export default createStore({
   },
   actions: {
     async getDadosIngredientes({ commit }) {
-      const data = await fetch('http://localhost:3000/ingredientes')
+
+      const data = await fetch(`${baseUrl}/ingredientes`)
         .then((response) => response.json())
 
       commit('getIngredientes', data)
     },
     async getStatus({ commit }) {
-      const data = await fetch('http://localhost:3000/status')
+      const data = await fetch(`${baseUrl}/status`)
         .then((response) => response.json())
 
       commit('getStatusList', data)
     },
     async getBurguers({ commit }) {
-      const data = await fetch('http://localhost:3000/burgers')
+      const data = await fetch(`${baseUrl}/burguers`)
         .then((response) => response.json())
       commit('getBurguersList', data)
     }
   },
-
-  modules: {
-  }
 })

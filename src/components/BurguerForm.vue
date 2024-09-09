@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Mensagem v-if="msg" :msg="msg"/>
+        <Mensagem v-if="msg" :msg="msg" />
         <form @submit.prevent="enviarFormulario">
             <div class="input-container">
                 <label for="nome">Nome do cliente:</label>
@@ -10,11 +10,7 @@
                 <label for="pao">Escolha o pão:</label>
                 <select v-model="pao" id="pao" name="pao">
                     <option value="">Selecione o seu pão</option>
-                    <option
-                        v-for="pao in $store.state.paes" 
-                        :key="pao.id"
-                        :value="pao"
-                    >
+                    <option v-for="pao in $store.state.paes" :key="pao.id" :value="pao">
                         {{ pao.tipo }}
                     </option>
                 </select>
@@ -23,24 +19,20 @@
                 <label for="carne">Escolha a carne do seu Burguer:</label>
                 <select v-model="carne" id="carne" name="carne">
                     <option value="">Selecione o tipo da sua carne</option>
-                    <option
-                        v-for="carne in $store.state.carnes"
-                        :key="carne.id"
-                        :value="carne"
-                    >
+                    <option v-for="carne in $store.state.carnes" :key="carne.id" :value="carne">
                         {{ carne.tipo }}
                     </option>
                 </select>
             </div>
             <div class="input-container opcionais-container">
                 <label for="opcionais" class="opcionais-title">Selecione os opcionais:</label>
-                <div v-for="opcional in $store.state.opcionaisLista" :key="opcional.id" class="checkbox-container" >
-                    <input v-model="opcionais" :value="opcional.tipo" type="checkbox" name="opcionais" >
+                <div v-for="opcional in $store.state.opcionaisLista" :key="opcional.id" class="checkbox-container">
+                    <input v-model="opcionais" :value="opcional.tipo" type="checkbox" name="opcionais">
                     <span>{{ opcional.tipo }}</span>
                 </div>
             </div>
             <div class="input-container">
-                <input type="submit" value="Criar meu Burguer!" class="form-submit"/>
+                <input type="submit" value="Criar meu Burguer!" class="form-submit" />
             </div>
         </form>
     </div>
@@ -59,12 +51,13 @@ export default {
 
     //Composition API
     setup() {
+        const baseUrl = process.env.VUE_APP_BASE_URL
         const store = useStore()
 
         const nome = ref("")
         const pao = ref("")
         const carne = ref("")
-        const opcionais= ref([])
+        const opcionais = ref([])
         const msg = ref({})
 
         onMounted(async () => {
@@ -76,6 +69,7 @@ export default {
         }
 
         const enviarFormulario = async () => {
+            if (!nome.value || !pao.value || !carne.value) return
             const data = {
                 nome: nome.value,
                 pao: pao.value,
@@ -83,8 +77,8 @@ export default {
                 opcionais: opcionais.value,
                 status: "Solicitado"
             }
-            
-            await fetch('http://localhost:3000/burgers', {
+
+            await fetch(`${baseUrl}/burguers`, {
                 method: "POST",
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(data)
@@ -93,9 +87,9 @@ export default {
                     limparCampos()
                     msg.value = {
                         tipo: 'pedido',
-                        conteudo: `Pedido Nº${data.id} realizado com sucesso!`
+                        conteudo: `Pedido realizado com sucesso!`
                     }
-                    setTimeout(() => msg.value = "",2000)
+                    setTimeout(() => msg.value = "", 2000)
                 })
         }
 
@@ -133,7 +127,7 @@ export default {
     //     async getDados() {
     //         const data = await fetch('http://localhost:3000/ingredientes')
     //             .then((response) => response.json())
-            
+
     //         this.paes = data.paes
     //         this.carnes = data.carnes
     //         this.opcionaisLista = data.opcionais
@@ -173,7 +167,7 @@ export default {
     // },
 }
 </script>
-  
+
 <style scoped>
 form {
     margin: 0 auto;
@@ -193,7 +187,7 @@ form {
     padding: 5px 10px;
 }
 
-.input-container input, 
+.input-container input,
 .input-container select {
     max-width: 300px;
     padding: 5px 10px;
@@ -202,28 +196,28 @@ form {
 .opcionais-container {
     flex-direction: row;
     flex-wrap: wrap;
-  }
+}
 
- .opcionais-title {
+.opcionais-title {
     width: 100%;
-  }
+}
 
-  .checkbox-container {
+.checkbox-container {
     display: flex;
     align-items: flex-start;
     width: 50%;
     margin-bottom: 20px;
-  }
+}
 
-  .checkbox-container span,
-  .checkbox-container input {
+.checkbox-container span,
+.checkbox-container input {
     width: auto;
-  }
+}
 
-  .checkbox-container span {
+.checkbox-container span {
     margin-left: 6px;
     font-weight: bold;
-  }
+}
 
 .input-container .form-submit {
     display: flex;
@@ -244,4 +238,3 @@ form {
     background-color: white;
 }
 </style>
-
