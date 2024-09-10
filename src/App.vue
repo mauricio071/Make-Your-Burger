@@ -1,6 +1,6 @@
 <template>
-  <Navbar :srcImg="logo" :altImg="descImg"/>
-  <router-view/>
+  <Navbar :srcImg="logo" :altImg="descImg" />
+  <router-view />
   <Footer />
 </template>
 
@@ -38,22 +38,22 @@ export default {
 </script>
 
 <style>
- * {
+* {
   font-family: Helvetica;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- }
+}
 
- .main-container {
+.main-container {
   min-height: 600px;
-  margin: 50px;
- }
+  margin: 20px;
+}
 
- h2 {
+h2 {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 30px;
   color: black;
- }
+}
 </style>

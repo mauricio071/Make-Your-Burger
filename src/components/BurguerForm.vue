@@ -189,7 +189,6 @@ form {
 
 .input-container input,
 .input-container select {
-    max-width: 300px;
     padding: 5px 10px;
 }
 
@@ -224,7 +223,7 @@ form {
     justify-content: center;
     background-color: black;
     color: orange;
-    padding: 10px 50px;
+    padding: 10px 20px;
     margin: auto;
     font-size: 20px;
     font-weight: bold;

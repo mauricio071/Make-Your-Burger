@@ -1,6 +1,7 @@
 <template>
     <footer>
-        <p>Make Your Burguer &copy; 2021</p>
+        <p style="padding-bottom: 1rem;">Make Your Burguer</p>
+        <p>&copy; 2024</p>
     </footer>
 </template>
 
@@ -15,6 +16,6 @@ footer {
     background-color: black;
     color: orange;
     text-align: center;
-    padding: 70px;
+    padding: 40px;
 }
 </style>
