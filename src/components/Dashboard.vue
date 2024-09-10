@@ -73,7 +73,10 @@ export default {
 
             await fetch(`${baseUrl}/burguers/${id}`, {
                 method: 'PATCH',
-                headers: { "Content-type": "application/json" },
+                headers: {
+                    "Content-type": "application/json",
+                    "Access-Control-Allow-Origin": baseUrl
+                },
                 body: dataJson
             }).then(() => {
                 emit('exibirMsg', {
