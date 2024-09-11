@@ -1,6 +1,9 @@
 <template>
     <div style="overflow: auto; min-height: 100vh;">
-        <table>
+        <div v-if="loading" style="text-align: center;">
+            <img src="../assets/loading.svg" alt="loading">
+        </div>
+        <table v-else>
             <thead>
                 <tr class="table-header">
                     <td>#:</td>
@@ -52,9 +55,13 @@ export default {
         const baseUrl = process.env.VUE_APP_BASE_URL
 
         const store = useStore()
+        const loading = ref(true)
 
-        onMounted(async () => {
-            await getBurguers()
+        onMounted(() => {
+            setTimeout(() => {
+                getBurguers()
+                loading.value = false
+            }, 300)
         })
 
         const getStatus = async () => {
@@ -102,7 +109,8 @@ export default {
 
         return {
             alterarStatus,
-            cancelarPedido
+            cancelarPedido,
+            loading
         }
     }
 
