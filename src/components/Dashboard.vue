@@ -61,7 +61,7 @@ export default {
             setTimeout(() => {
                 getBurguers()
                 loading.value = false
-            }, 300)
+            }, 2500)
         })
 
         const getStatus = async () => {
