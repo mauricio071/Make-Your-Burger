@@ -46,6 +46,7 @@ export default {
 }
 
 .main-container {
+  padding: 3rem 0;
   min-height: 600px;
   margin: 20px;
 }

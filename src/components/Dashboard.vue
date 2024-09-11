@@ -1,5 +1,5 @@
 <template>
-    <div style="overflow: auto;">
+    <div style="overflow: auto; min-height: 100vh;">
         <table>
             <thead>
                 <tr class="table-header">
@@ -53,8 +53,8 @@ export default {
 
         const store = useStore()
 
-        onMounted(() => {
-            getBurguers()
+        onMounted(async () => {
+            await getBurguers()
         })
 
         const getStatus = async () => {
