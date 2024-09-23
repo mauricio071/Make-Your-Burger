@@ -1,6 +1,6 @@
 <div align="center"> <h1>Make Your Burguer</h1> </div>
 
-![Preview-Screens](https://github.com/mauricio071/Make-Your-Burguer/blob/main/make-your-burguer.png)
+<p align="center">Monte seu hambúrguer personalizado com essa aplicação interativa de pedidos!</p>
 
 ## 📝 Sobre o projeto
 
@@ -13,6 +13,16 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 -   **HTML** - Estrutura do conteúdo
 -   **CSS** - Estilização da interface
 -   **Tailwind CSS** - Framework de estilos
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="./src/assets/readme-img/img-1.png" alt="Preview-Screens-1" width="500" >
+</p>
+
+<p align="center">
+  <img src="./src/assets/readme-img/img-2.png" alt="Preview-Screens-1" width="500" >
+</p>
 
 ## 🌐 Acesse o projeto online
 Você pode acessar a versão online do projeto [aqui](https://make-your-burguer.netlify.app).
