@@ -16,7 +16,7 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 -   **Node.js** - Ambiente de execução para JavaScript no back-end
 
 ## 🌐 Acesse o projeto online
-Você pode acessar a versão online do projeto [aqui](https://make-your-burguer.netlify.app/).
+Você pode acessar a versão online do projeto [aqui](https://make-your-burguer.netlify.app).
 
 ## 🖥️ Como configurar o projeto
 Siga os passos abaixo para configurar e executar o projeto em seu ambiente local:
