@@ -1,6 +1,6 @@
 <div align="center"> <h1>Make Your Burguer</h1> </div>
 
-![Preview-Screens](https://github.com/mauricio071/make-your-burguer/blob/master/make-your-burguer.png)
+![Preview-Screens](https://github.com/mauricio071/Make-Your-Burguer/blob/main/make-your-burguer.png)
 
 ## 📝 Sobre o projeto
 
@@ -13,13 +13,13 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 -   **HTML** - Estrutura do conteúdo
 -   **CSS** - Estilização da interface
 -   **Tailwind CSS** - Framework de estilos
--   **Node.js** - Ambiente de execução para JavaScript no back-end
 
 ## 🌐 Acesse o projeto online
 Você pode acessar a versão online do projeto [aqui](https://make-your-burguer.netlify.app).
 
 ## 🖥️ Como configurar o projeto
-Siga os passos abaixo para configurar e executar o projeto em seu ambiente local:
+
+Siga os passos abaixo para instalar e executar o projeto em seu ambiente local:
 
 ### 1. Clone o repositório:
 
@@ -39,7 +39,14 @@ $ cd Make-Your-Burguer
 $ npm install
 ```
 
-### 4. Inicialize o projeto:
+### 4. Configure o ambiente:
+Para que o front-end consiga consumir a API, primeiro instale o projeto da API [aqui](https://github.com/mauricio071/Make-Your-Burguer-api). Em seguida, ajuste o arquivo .env no projeto com a URL da API. Por exemplo:
+
+```bash
+VUE_APP_BASE_URL=http://localhost:3000
+```
+
+### 5. Inicialize o projeto:
 
 ```bash 
 $ npm run serve
