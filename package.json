@@ -5,13 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "start:backend": "node api/index.js"
+    "backend": "json-server --watch db/db.json"
   },
   "dependencies": {
     "core-js": "^3.8.3",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.6.1",
+    "json-server": "^1.0.0-beta.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
