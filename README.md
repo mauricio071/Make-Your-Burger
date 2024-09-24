@@ -22,7 +22,7 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 </p>
 
 <p align="center">
-  <img src="./src/assets/readme-img/img-2.png" alt="Preview-Screens-1" width="500" >
+  <img src="./src/assets/readme-img/img-2.png" alt="Preview-Screens-2" width="500" >
 </p>
 
 ## 🌐 Acesse o projeto online
