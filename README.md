@@ -54,7 +54,7 @@ $ npm install
 Para que o front-end consiga consumir a API, primeiro instale o projeto da API [aqui](https://github.com/mauricio071/Make-Your-Burguer-api). Em seguida, ajuste o arquivo .env no projeto com a URL da API. Por exemplo:
 
 ```bash
-VUE_APP_BASE_URL=http://localhost:3000
+VUE_APP_BASE_URL=http://localhost:3001/api
 ```
 
 ### 5. Inicialize o projeto:
