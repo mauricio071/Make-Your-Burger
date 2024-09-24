@@ -2,6 +2,14 @@
 
 <p align="center">Monte seu hambúrguer personalizado com essa aplicação interativa de pedidos!</p>
 
+<p align="center">
+  <img alt="Github Language Count" src="https://img.shields.io/github/languages/count/mauricio071/Potfolio-Mauricio-Naoki?color=00bfa6">
+  <img width="1" />
+  <img alt="Github Top Language" src="https://img.shields.io/github/languages/top/mauricio071/Potfolio-Mauricio-Naoki?color=00bfa6">
+  <img width="1" />
+  <img alt="Repository Size" src="https://img.shields.io/github/repo-size/mauricio071/Potfolio-Mauricio-Naoki?color=00bfa6">
+</p>
+
 ## 📝 Sobre o projeto
 
 Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, permite que os usuários montem hambúrgueres personalizados e gerenciem seus pedidos. Utilizando a biblioteca Vuex para gerenciamento de estado, os usuários podem editar o status e excluir os pedidos.
