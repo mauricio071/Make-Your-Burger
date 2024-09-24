@@ -4,11 +4,12 @@
 
 ## 📝 Sobre o projeto
 
-Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, permite que os usuários montem hambúrgueres personalizados e gerenciem os pedidos, incluindo a edição do status e a exclusão de pedidos.
+Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, permite que os usuários montem hambúrgueres personalizados e gerenciem seus pedidos. Utilizando a biblioteca Vuex para gerenciamento de estado, os usuários podem editar o status e excluir os pedidos.
 
 ## 🛠 Tecnologias utilizadas
 
 -   **Vue.js** - Framework JavaScript progressivo
+-   **Vuex** - Biblioteca de gerenciamento de estado
 -   **JavaScript** - Linguagem de programação
 -   **HTML** - Estrutura do conteúdo
 -   **CSS** - Estilização da interface
