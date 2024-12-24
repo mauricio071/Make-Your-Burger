@@ -1,6 +1,14 @@
 <div align="center"> <h1>Make Your Burguer</h1> </div>
-
+ 
 <p align="center">Monte seu hambúrguer personalizado com essa aplicação interativa de pedidos!</p>
+
+<p align="center">
+  <img alt="Github Language Count" src="https://img.shields.io/github/languages/count/mauricio071/Potfolio-Mauricio-Naoki?color=00bfa6">
+  <img width="1" />
+  <img alt="Github Top Language" src="https://img.shields.io/github/languages/top/mauricio071/Potfolio-Mauricio-Naoki?color=00bfa6">
+  <img width="1" />
+  <img alt="Repository Size" src="https://img.shields.io/github/repo-size/mauricio071/Potfolio-Mauricio-Naoki?color=00bfa6">
+</p>
 
 ## 📝 Sobre o projeto
 
