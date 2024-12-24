@@ -15,7 +15,9 @@ header {
   background-image: url('../../public/img/burger.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 400px;
+  /* background-attachment: fixed; */
+  background-position: center;
+  height: 300px;
   display: flex;
   align-items: center;
 }
@@ -25,26 +27,19 @@ header h1 {
   color: white;
   font-size: 40px;
   padding: 20px 40px;
-
+  text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   header {
-    background-position: 0 -100px;
-  }
-}
-
-@media (min-width: 1024px) {
-  header {
-    background-position: 0 -200px;
+    height: 400px;
   }
 }
 
 @media (min-width: 1350px) {
   header {
-    background-image: url('../../public/img/burger.jpg');
-    background-position: 0 -330px;
-    height: 700px;
+    /* background-position: center -300px; */
+    height: 600px;
   }
 
   h1 {
