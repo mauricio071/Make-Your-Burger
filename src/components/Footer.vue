@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <p style="padding-bottom: 1rem;">Make Your Burguer</p>
+        <p style="padding-bottom: 1rem;">Make Your Burger</p>
         <p>&copy; 2024</p>
     </footer>
 </template>

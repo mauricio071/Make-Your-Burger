@@ -16,7 +16,7 @@
                 </select>
             </div>
             <div class="input-container">
-                <label for="carne">Escolha a carne do seu Burguer:</label>
+                <label for="carne">Escolha a carne do seu Burger:</label>
                 <select v-model="carne" id="carne" name="carne">
                     <option value="">Selecione o tipo da sua carne</option>
                     <option v-for="carne in $store.state.carnes" :key="carne.id" :value="carne">
@@ -32,40 +32,40 @@
                 </div>
             </div>
             <div class="input-container">
-                <input type="submit" value="Criar meu Burguer!" class="form-submit" />
+                <input type="submit" value="Criar meu Burger!" class="form-submit" />
             </div>
         </form>
     </div>
 </template>
 
 <script>
-import Mensagem from "@/components/Mensagem.vue"
-import { ref, onMounted } from 'vue'
-import { useStore } from 'vuex'
+import Mensagem from "@/components/Mensagem.vue";
+import { ref, onMounted } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
-    name: "BurguerForm",
+    name: "BurgerForm",
     components: {
         Mensagem
     },
 
     //Composition API
     setup() {
-        const baseUrl = process.env.VUE_APP_BASE_URL
-        const store = useStore()
+        const baseUrl = process.env.VUE_APP_BASE_URL;
+        const store = useStore();
 
-        const nome = ref("")
-        const pao = ref("")
-        const carne = ref("")
-        const opcionais = ref([])
-        const msg = ref({})
+        const nome = ref("");
+        const pao = ref("");
+        const carne = ref("");
+        const opcionais = ref([]);
+        const msg = ref({});
 
         onMounted(async () => {
-            getDados()
+            getDados();
         })
 
         const getDados = async () => {
-            store.dispatch('getDadosIngredientes')
+            store.dispatch('getDadosIngredientes');
         }
 
         const enviarFormulario = async () => {
@@ -76,9 +76,9 @@ export default {
                 carne: carne.value,
                 opcionais: opcionais.value,
                 status: "Solicitado"
-            }
+            };
 
-            await fetch(`${baseUrl}/burguers`, {
+            await fetch(`${baseUrl}/burgers`, {
                 method: "POST",
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(data)
@@ -90,7 +90,7 @@ export default {
                         conteudo: `Pedido realizado com sucesso!`
                     }
                     setTimeout(() => msg.value = "", 2000)
-                })
+                });
         }
 
         const limparCampos = () => {
@@ -98,7 +98,7 @@ export default {
             pao.value = ""
             carne.value = ""
             opcionais.value = []
-        }
+        };
 
         return {
             nome,
@@ -107,7 +107,7 @@ export default {
             opcionais,
             msg,
             enviarFormulario
-        }
+        };
     }
 
     //Option API

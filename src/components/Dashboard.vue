@@ -15,24 +15,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="burguer in $store.state.burguers" :key="burguer.id">
-                    <td>{{ burguer.id }}</td>
-                    <td>{{ burguer.nome }}</td>
-                    <td>{{ burguer.pao.tipo }}</td>
-                    <td>{{ burguer.carne.tipo }}</td>
+                <tr v-for="burger in $store.state.burgers" :key="burger.id">
+                    <td>{{ burger.id }}</td>
+                    <td>{{ burger.nome }}</td>
+                    <td>{{ burger.pao.tipo }}</td>
+                    <td>{{ burger.carne.tipo }}</td>
                     <td>
-                        <ul v-for="(opcional, index) in burguer.opcionais" :key="index">
+                        <ul v-for="(opcional, index) in burger.opcionais" :key="index">
                             <li>{{ opcional }}</li>
                         </ul>
                     </td>
                     <td class="table-actions">
-                        <select @change="alterarStatus($event, burguer.id)" :value="burguer.status">
+                        <select @change="alterarStatus($event, burger.id)" :value="burger.status">
                             <option value="">Selecione</option>
-                            <option v-for="status in $store.state.statusList" :key="status.id" :value="burguer.tipo">
+                            <option v-for="status in $store.state.statusList" :key="status.id" :value="burger.tipo">
                                 {{ status.tipo }}
                             </option>
                         </select>
-                        <button @click="cancelarPedido(burguer.id)" class="cancel-btn">
+                        <button @click="cancelarPedido(burger.id)" class="cancel-btn">
                             Cancelar
                         </button>
                     </td>
@@ -44,41 +44,41 @@
 
 <script>
 
-import { onMounted, ref } from 'vue'
-import { useStore } from 'vuex'
+import { onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
     name: "Dashboard",
 
     //Composition API
     setup(props, { emit }) {
-        const baseUrl = process.env.VUE_APP_BASE_URL
+        const baseUrl = process.env.VUE_APP_BASE_URL;
 
-        const store = useStore()
-        const loading = ref(true)
+        const store = useStore();
+        const loading = ref(true);
 
         onMounted(() => {
             setTimeout(() => {
-                getBurguers()
-                loading.value = false
+                getBurgers();
+                loading.value = false;
             }, 2000)
         })
 
         const getStatus = async () => {
-            store.dispatch('getStatus')
+            store.dispatch('getStatus');
         }
 
-        const getBurguers = async () => {
-            store.dispatch('getBurguers')
-            getStatus()
+        const getBurgers = async () => {
+            store.dispatch('getBurgers');
+            getStatus();
         }
 
         const alterarStatus = async (event, id) => {
-            const novoStatus = event.target.value
+            const novoStatus = event.target.value;
 
-            const dataJson = JSON.stringify({ status: novoStatus })
+            const dataJson = JSON.stringify({ status: novoStatus });
 
-            await fetch(`${baseUrl}/burguers/${id}`, {
+            await fetch(`${baseUrl}/burgers/${id}`, {
                 method: 'PATCH',
                 headers: {
                     "Content-type": "application/json",
@@ -90,39 +90,39 @@ export default {
                     tipo: 'atualizado',
                     conteudo: `Pedido atualizado!`
                 })
-            })
+            });
         }
 
         const cancelarPedido = async (id) => {
-            const idx = store.state.burguers.findIndex((item) => item.id === id)
+            const idx = store.state.burgers.findIndex((item) => item.id === id);
 
-            await fetch(`${baseUrl}/burguers/${id}`, {
+            await fetch(`${baseUrl}/burgers/${id}`, {
                 method: "DELETE"
-            }).then(() => store.state.burguers.splice(idx, 1))
+            }).then(() => store.state.burgers.splice(idx, 1))
                 .then(() => {
                     emit('exibirMsg', {
                         tipo: 'cancelado',
                         conteudo: `Pedido cancelado!`
                     })
-                })
+                });
         }
 
         return {
             alterarStatus,
             cancelarPedido,
             loading
-        }
+        };
     }
 
     //Option API
     // data() {
     //     return {
-    //         burguers: [],
+    //         burgers: [],
     //         statusList: [],
     //     }
     // },
     // mounted () {
-    //     this.getBurguers()
+    //     this.getburgers()
 
     // },
     // methods: {
@@ -131,17 +131,17 @@ export default {
     //             .then((response) => response.json())
     //             .then((data) => this.statusList = data)
     //     },
-    //     async getBurguers() {
+    //     async getburgers() {
     //         await fetch('http://localhost:3000/burgers')
     //             .then((response) => response.json())
-    //             .then((data) => this.burguers = data)
+    //             .then((data) => this.burgers = data)
     //         this.getStatus()
     //     },
     //     async cancelarPedido(id) {
-    //         const idx = await this.burguers.findIndex((item) => item.id === id)
+    //         const idx = await this.burgers.findIndex((item) => item.id === id)
     //         fetch(`http://localhost:3000/burgers/${id}`, {
     //             method: "DELETE", 
-    //         }).then(() => this.burguers.splice(idx, 1))
+    //         }).then(() => this.burgers.splice(idx, 1))
     //             .then(() => {
     //                     this.$emit('exibirMsg', {
     //                     tipo: 'cancelado',

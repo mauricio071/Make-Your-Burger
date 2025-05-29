@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue"
-import Footer from "@/components/Footer.vue"
-import { ref } from 'vue'
+import Navbar from "@/components/Navbar.vue";
+import Footer from "@/components/Footer.vue";
+import { ref } from 'vue';
 
 export default {
   name: "App",
@@ -18,13 +18,13 @@ export default {
 
   //Composition API
   setup() {
-    const logo = ref('/img/logo.png')
-    const descImg = ref('Hamburguer')
+    const logo = ref('/img/logo.png');
+    const descImg = ref('Hamburguer');
 
     return {
       logo,
       descImg
-    }
+    };
   }
 
   //Option API

@@ -1,4 +1,4 @@
-<div align="center"> <h1>Make Your Burguer</h1> </div>
+<div align="center"> <h1>Make Your burger</h1> </div>
  
 <p align="center">Monte seu hambúrguer personalizado com essa aplicação interativa de pedidos!</p>
 
@@ -16,12 +16,12 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 
 ## 🛠 Tecnologias utilizadas
 
--   **Vue.js** - Framework JavaScript progressivo
--   **Vuex** - Biblioteca de gerenciamento de estado
--   **JavaScript** - Linguagem de programação
--   **HTML** - Estrutura do conteúdo
--   **CSS** - Estilização da interface
--   **Tailwind CSS** - Framework de estilos
+- **Vue.js** - Framework JavaScript progressivo
+- **Vuex** - Biblioteca de gerenciamento de estado
+- **JavaScript** - Linguagem de programação
+- **HTML** - Estrutura do conteúdo
+- **CSS** - Estilização da interface
+- **Tailwind CSS** - Framework de estilos
 
 ## 📸 Screenshots
 
@@ -34,7 +34,8 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 </p>
 
 ## 🌐 Acesse o projeto online
-Você pode acessar a versão online do projeto [aqui](https://make-your-burguer.netlify.app).
+
+Você pode acessar a versão online do projeto [aqui](https://make-your-burger.netlify.app).
 
 ## 🖥️ Como configurar o projeto
 
@@ -43,13 +44,13 @@ Siga os passos abaixo para instalar e executar o projeto em seu ambiente local:
 ### 1. Clone o repositório:
 
 ```bash
-$ git clone https://github.com/mauricio071/Make-Your-Burguer
+$ git clone https://github.com/mauricio071/Make-Your-burger
 ```
 
 ### 2. Acesse o diretório do projeto:
 
 ```bash
-$ cd Make-Your-Burguer
+$ cd Make-Your-burger
 ```
 
 ### 3. Instale as dependências necessárias:
@@ -59,7 +60,8 @@ $ npm install
 ```
 
 ### 4. Configure o ambiente:
-Para que o front-end consiga consumir a API, primeiro instale o projeto da API [aqui](https://github.com/mauricio071/Make-Your-Burguer-api). Em seguida, ajuste o arquivo .env no projeto com a URL da API. Por exemplo:
+
+Para que o front-end consiga consumir a API, primeiro instale o projeto da API [aqui](https://github.com/mauricio071/Make-Your-burger-api). Em seguida, ajuste o arquivo .env no projeto com a URL da API. Por exemplo:
 
 ```bash
 VUE_APP_BASE_URL=http://localhost:3001/api
@@ -67,7 +69,8 @@ VUE_APP_BASE_URL=http://localhost:3001/api
 
 ### 5. Inicialize o projeto:
 
-```bash 
+```bash
 $ npm run serve
 ```
+
 Agora você pode acessar o projeto no navegador em http://localhost:8080 (ou na porta indicada pelo terminal).
