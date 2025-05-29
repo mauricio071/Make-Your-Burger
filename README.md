@@ -43,13 +43,13 @@ Siga os passos abaixo para instalar e executar o projeto em seu ambiente local:
 ### 1. Clone o repositório:
 
 ```bash
-$ git clone https://github.com/mauricio071/Make-Your-burger
+$ git clone https://github.com/mauricio071/Make-Your-Burger
 ```
 
 ### 2. Acesse o diretório do projeto:
 
 ```bash
-$ cd Make-Your-burger
+$ cd Make-Your-Burger
 ```
 
 ### 3. Instale as dependências necessárias:
