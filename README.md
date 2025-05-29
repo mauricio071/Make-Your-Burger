@@ -18,9 +18,9 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 
 - **Vue.js** - Framework JavaScript progressivo
 - **Vuex** - Biblioteca de gerenciamento de estado
-- **JavaScript** - Linguagem de programação
-- **HTML** - Estrutura do conteúdo
-- **CSS** - Estilização da interface
+- **JavaScript** - Linguagem de programação para desenvolvimento web
+- **HTML** - Linguagem de marcação que estrutura o conteúdo na web
+- **CSS** - Linguagem de estilos usada para definir o visual das interfaces web
 - **Tailwind CSS** - Framework de estilos
 
 ## 📸 Screenshots
