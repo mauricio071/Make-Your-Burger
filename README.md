@@ -34,7 +34,7 @@ Esta aplicação, desenvolvida com Vue.js no front-end e Node.js no back-end, pe
 
 ## 🌐 Acesse o projeto online
 
-Você pode acessar a versão online do projeto [aqui](https://make-your-burger.netlify.app).
+Você pode acessar a versão online do projeto [aqui](https://make-your-burger-ma.netlify.app).
 
 ## 🖥️ Como configurar o projeto
 
